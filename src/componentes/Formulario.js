@@ -22,8 +22,16 @@ const Boton = styled.input`
 `;
 
 function Formulario() {
+    const MONEDAS = [
+        { codigo: 'EUR', nombre: 'Euro' },
+        { codigo: 'GBP', nombre: 'Libra Esterlina' },
+        { codigo: 'KRW', nombre: 'Won Surcoreano' },
+        { codigo: 'MXN', nombre: 'Peso Mexicano' },
+        { codigo: 'USD', nombre: 'Dolar de Estados Unidos' },
+    ];
+
     // Utilizar Custom Hook useMoneda
-    const [moneda, SelectMonedas, setState] = useMoneda();
+    const [moneda, SelectMonedas] = useMoneda('Elige tu Moneda: ', '', MONEDAS);
 
     return (
         <form>
