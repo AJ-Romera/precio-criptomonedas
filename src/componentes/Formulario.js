@@ -70,7 +70,7 @@ function Formulario({ setMoneda, setCriptomoneda }) {
             return;
         }
 
-        // Pasar los datos al componente principal (DESARROLLO EN PROCESO)
+        // Pasar los datos al componente principal
         setError(false);
         setMoneda(moneda);
         setCriptomoneda(criptomoneda);
