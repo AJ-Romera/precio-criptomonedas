@@ -25,7 +25,7 @@ const Boton = styled.input`
     }
 `;
 
-function Formulario() {
+function Formulario({ setMoneda, setCriptomoneda }) {
     const [listaCripto, setListaCripto] = useState([]);
     const [error, setError] = useState(false);
 
@@ -72,6 +72,8 @@ function Formulario() {
 
         // Pasar los datos al componente principal (DESARROLLO EN PROCESO)
         setError(false);
+        setMoneda(moneda);
+        setCriptomoneda(criptomoneda);
     };
 
     return (
