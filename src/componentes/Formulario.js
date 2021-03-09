@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from '@emotion/styled';
 
+import Error from './Error';
+
 import useMoneda from '../hooks/useMoneda';
 import useCriptomoneda from '../hooks/useCriptomoneda';
 
@@ -74,7 +76,9 @@ function Formulario() {
 
     return (
         <form onSubmit={cotizarMoneda}>
-            {error ? 'Error, rellene ambos campos' : null}
+            {error ? (
+                <Error mensaje='Por favor, rellene ambos campos correctamente' />
+            ) : null}
             <SelectMonedas />
             <SelectCripto />
             <Boton type='submit' value='Calcular Ahora' />
