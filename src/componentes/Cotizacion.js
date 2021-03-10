@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import Formulario from './Formulario';
-
 const ResultadoDiv = styled.div`
     color: #fff;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
