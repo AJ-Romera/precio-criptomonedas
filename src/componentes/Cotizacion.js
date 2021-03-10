@@ -65,7 +65,7 @@ function Cotizacion({ resultado }) {
                 <CriptoImg src={criptoImgUrl} alt='Imagen criptomoneda' />
             </Contenedor>
             <Info>
-                Precio más bajo en las últimas 24h:{' '}
+                Precio más alto en las últimas 24h:{' '}
                 <span>{resultado.HIGH24HOUR}</span>
             </Info>
             <Info>
