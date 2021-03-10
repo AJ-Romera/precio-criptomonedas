@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import Formulario from './Formulario';
 
 const ResultadoDiv = styled.div`
     color: #fff;
@@ -43,7 +44,6 @@ function Cotizacion({ resultado }) {
     if (Object.keys(resultado).length === 0) {
         return null;
     }
-    console.log(resultado);
 
     // Imagen de la cripto
     const criptoImgUrl = `https://www.cryptocompare.com${resultado.IMAGEURL}`;

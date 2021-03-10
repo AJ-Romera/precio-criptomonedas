@@ -39,11 +39,31 @@ const Heading1 = styled.h1`
     }
 `;
 
+const Boton = styled.input`
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+    background-color: #66a2fe;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    margin-bottom: 30px;
+
+    &:hover {
+        background-color: #326ac0;
+        cursor: pointer;
+    }
+`;
+
 function App() {
     const [moneda, setMoneda] = useState('');
     const [criptomoneda, setCriptomoneda] = useState('');
     const [resultado, setResultado] = useState({});
     const [cargando, setCargando] = useState(false);
+    const [ocultaForm, setOcultaForm] = useState(false);
 
     useEffect(() => {
         const obtenerCotizacion = async () => {
@@ -55,12 +75,15 @@ function App() {
             const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
             const resultado = await axios.get(url);
 
+            // Oculta el Formulario
+            setOcultaForm(true);
+
             // Mostrar el Spinner
             setCargando(true);
 
             // Temporizador para que oculte el Spinner tras 2,5 segundos
             setTimeout(() => {
-                //Guardar cotización
+                // Se oculta el Spinner
                 setCargando(false);
 
                 //Guardar cotización
@@ -70,11 +93,35 @@ function App() {
         obtenerCotizacion();
     }, [moneda, criptomoneda]);
 
+    // Cuando el usuario hace submit para valorar otra cripto
+    const otraCripto = (e) => {
+        e.preventDefault();
+
+        // Vuelve a mostrar el Formulario
+        setOcultaForm(false);
+    };
+
     // Muestra un componente u otro según unas condiciones
     const componente = cargando ? (
         <Spinner />
     ) : (
-        <Cotizacion resultado={resultado} />
+        <>
+            {ocultaForm ? (
+                <>
+                    <Cotizacion resultado={resultado} />
+                    <Boton
+                        type='button'
+                        value='Quiero la Cotización de otra Criptomoneda'
+                        onClick={otraCripto}
+                    />
+                </>
+            ) : null}
+        </>
+    );
+
+    // Muestra form
+    const formulario = ocultaForm ? null : (
+        <Formulario setMoneda={setMoneda} setCriptomoneda={setCriptomoneda} />
     );
 
     return (
@@ -85,10 +132,7 @@ function App() {
             <div>
                 <Heading1>Cotiza Criptomonedas</Heading1>
 
-                <Formulario
-                    setMoneda={setMoneda}
-                    setCriptomoneda={setCriptomoneda}
-                />
+                {formulario}
 
                 {componente}
             </div>
