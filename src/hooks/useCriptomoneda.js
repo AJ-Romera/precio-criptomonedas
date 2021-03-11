@@ -33,7 +33,7 @@ function useCriptomoneda(label, stateInicial, opciones) {
                     onChange={(e) => setState(e.target.value)}
                     value={state}
                 >
-                    <option value=''>-- Seleccione Moneda --</option>
+                    <option value=''>-- Seleccione Criptomoneda --</option>
                     {opciones.map((opcion) => {
                         return (
                             <option
