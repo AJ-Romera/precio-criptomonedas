@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
+
 const ResultadoDiv = styled.div`
     color: #fff;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
@@ -76,5 +78,9 @@ function Cotizacion({ resultado }) {
         </ResultadoDiv>
     );
 }
+
+Cotizacion.propTypes = {
+    resultado: PropTypes.object.isRequired,
+};
 
 export default Cotizacion;
